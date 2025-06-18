@@ -30,7 +30,7 @@ pipeline {
     }
     stage('Build and Push Docker Image') {
       environment {
-        DOCKER_IMAGE = "thejadocker1425/CICD-springboot:${BUILD_NUMBER}"
+        DOCKER_IMAGE = "thejadocker1425/cicd-springboot:${BUILD_NUMBER}"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
       }
       steps {
