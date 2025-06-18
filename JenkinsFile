@@ -5,14 +5,16 @@ pipeline {
           args '-v /var/run/docker.sock:/var/run/docker.sock --user root'
         }
   }
-  stage('Debug Workspace') {
-    steps {
-      sh '''
-        pwd
-        ls -la
-        if [ -d .git ]; then echo ".git directory found"; else echo ".git directory NOT found"; fi
-      '''
+  stages{
+    stage('Debug Workspace') {
+        steps {
+            sh '''
+            pwd
+            ls -la
+            if [ -d .git ]; then echo ".git directory found"; else echo ".git directory NOT found"; fi
+        '''
     }
+  }
   stages {
     stage('Checkout') {
       steps {
