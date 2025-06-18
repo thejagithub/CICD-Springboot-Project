@@ -47,7 +47,7 @@ pipeline {
     }
     stage('Update Deployment File') {
         environment {
-            GIT_REPO_NAME = "CICD-Springboot-project"
+            GIT_REPO_NAME = "CICD-Springboot-Project"
             GIT_USER_NAME = "thejagithub"
         }
         steps {
