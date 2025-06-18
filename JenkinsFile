@@ -9,7 +9,6 @@ pipeline {
     stage('Checkout') {
       steps {
         sh 'echo passed'
-        //git branch: 'main', url: 'https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero.git'
       }
     }
     stage('Build and Test') {
@@ -21,7 +20,7 @@ pipeline {
     }
     stage('Static Code Analysis') {
       environment {
-        SONAR_URL = "http://localhost:9000"
+        SONAR_URL = "http://57.181.30.147:9000"
       }
       steps {
         withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
@@ -31,8 +30,7 @@ pipeline {
     }
     stage('Build and Push Docker Image') {
       environment {
-        DOCKER_IMAGE = "thejagithub/CICD-springboot:${BUILD_NUMBER}"
-        // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
+        DOCKER_IMAGE = "thejadocker1425/CICD-springboot:${BUILD_NUMBER}"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
       }
       steps {
