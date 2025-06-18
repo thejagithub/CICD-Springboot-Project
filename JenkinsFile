@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
           image 'thejadocker1425/maven-docker-agent:latest'
-          args '-v /var/run/docker.sock:/var/run/docker.sock'
+          args '-v /var/run/docker.sock:/var/run/docker.sock --user root'
         }
   }
   stages {
