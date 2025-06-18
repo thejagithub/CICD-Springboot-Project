@@ -9,7 +9,8 @@ pipeline {
     stage('Checkout') {
       steps {
         checkout scm
-        sh 'echo passed'
+        sh 'pwd'
+        sh 'ls -la'
       }
     }
     stage('Build and Test') {
