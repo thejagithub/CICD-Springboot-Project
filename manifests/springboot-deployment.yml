@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: spring-boot-app
-          image: thejadocker1425/CICD-Springboot-project:replaceImageTag
+          image: thejadocker1425/CICD-Springboot-project:30
           ports:
             - containerPort: 8080
