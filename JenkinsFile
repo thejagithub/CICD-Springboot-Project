@@ -58,6 +58,7 @@ pipeline {
                     echo "Listing files:"
                     ls -la
                     cd $WORKSPACE
+                     git config --global --add safe.directory $PWD
                     git config user.email "thejanaravindu2000@gmail.com"
                     git config user.name "thejagithub"
                     BUILD_NUMBER=${BUILD_NUMBER}
