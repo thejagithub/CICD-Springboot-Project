@@ -76,4 +76,29 @@ pipeline {
         }
     }
   }
+  stage('Reset Tag Placeholder') {
+      environment {
+        GIT_REPO_NAME = "CICD-Springboot-project"
+        GIT_USER_NAME = "thejagithub"
+      }
+      steps {
+        withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
+          sh '''
+            echo "Resetting image tag placeholder for next build..."
+            git checkout master
+
+            sed -i "s/${BUILD_NUMBER}/replaceImageTag/g" manifests/springboot-deployment.yml
+            git add manifests/springboot-deployment.yml
+
+            if git diff --cached --quiet; then
+              echo "Nothing to reset."
+            else
+              git commit -m "Reset image tag placeholder for next build"
+              git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:master
+            fi
+          '''
+        }
+      }
+  }
 }
+      
