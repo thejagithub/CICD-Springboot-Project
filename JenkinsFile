@@ -75,8 +75,7 @@ pipeline {
             }
         }
     }
-  }
-  stage('Reset Tag Placeholder') {
+    stage('Reset Tag Placeholder') {
       environment {
         GIT_REPO_NAME = "CICD-Springboot-project"
         GIT_USER_NAME = "thejagithub"
@@ -99,6 +98,7 @@ pipeline {
           '''
         }
       }
+    }  
   }
 }
       
