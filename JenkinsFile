@@ -65,6 +65,9 @@ pipeline {
                     BUILD_NUMBER=${BUILD_NUMBER}
                     sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" manifests/springboot-deployment.yml
                     git add manifests/springboot-deployment.yml
+                    if git diff --cached --quiet; then
+                      echo "No changes to commit."
+                    else
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
                     git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:master
                 '''
